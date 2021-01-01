@@ -1,0 +1,20 @@
+{
+    "configurations": [
+        {
+            "name": "Linux",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "/home/logan/Downloads/ATMEGA_pack/include",
+                "/usr/avr/include/"
+            ],
+            "compilerPath": "/usr/bin/clang",
+            "cStandard": "c11",
+            "cppStandard": "c++14",
+            "intelliSenseMode": "clang-x64"
+            // "defines": [
+            //     "__AVR_ATmega32U4__"
+            // ]
+        }
+    ],
+    "version": 4
+}
