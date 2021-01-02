@@ -6,6 +6,7 @@ add_executable(main_32u4
     main.c
     usb.c
     matrix.c
+    serial.c
 )
 
 # target_include_directories(main

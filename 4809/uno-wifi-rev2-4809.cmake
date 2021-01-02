@@ -34,6 +34,7 @@ add_link_options(
     -B${PACK_LOCATION}gcc/dev/atmega4809 
     -I${PACK_LOCATION}include 
     -mmcu=atmega4809
+    # -lstdc++
 )
 
 add_compile_options(

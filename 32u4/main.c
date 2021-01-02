@@ -14,12 +14,14 @@ main.c
 #include "keys.h"
 #include "serial.h"
 
-int main(int argc, char** argv) {
+int main(int argc, char **argv)
+{
   usb_init();
 
   DDRC |= ((1 << 7) | (1 << 6));
 
-  while (!get_usb_config_status()) {
+  while (!get_usb_config_status())
+  {
     // LED Animation
     PORTC &= ~(1 << 6);
     PORTC |= (1 << 7);
@@ -38,12 +40,17 @@ int main(int argc, char** argv) {
 
   // PB04 PB05 <--> PD02 PD03
   // 32u4           4809
-
+  setup_serial();
   // matrix_init();
-	// while(1) do_matrix_scan(); // Scan the matrix
-  while(1) {
+  // while(1) do_matrix_scan(); // Scan the matrix
+  while (1)
+  {
     // Send A ... ?
     _delay_ms(500);
-    send_keypress(KEY_A, 0);
+    uint8_t byte = serial_receive_byte();
+    if (byte)
+    {
+      send_keypress(KEY_A, 0);
+    }
   }
 }
