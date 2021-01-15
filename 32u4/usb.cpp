@@ -3,7 +3,6 @@ usb.c
 USB Controller initialization, device setup, and HID interrupt routines
 */
 
-#define F_CPU 16000000
 #include "usb.h"
 #include <avr/interrupt.h>
 #include <avr/pgmspace.h>
@@ -12,6 +11,10 @@ USB Controller initialization, device setup, and HID interrupt routines
 
 volatile uint8_t keyboard_pressed_keys[6] = {0, 0, 0, 0, 0, 0};
 volatile uint8_t keyboard_modifier = 0;
+
+uint8_t usb_config_status;
+uint8_t keyboard_protocol;
+uint8_t keyboard_leds; 
 
 static uint16_t keyboard_idle_value =
     125; // HID Idle setting, how often the device resends unchanging reports,
@@ -54,7 +57,7 @@ static const uint8_t device_descriptor[] PROGMEM = {
     0,                   // iManufacturer - The String Descriptor that has the manufacturer name
                          // -
                          // Specified by USB 2.0 Table 9-8
-    "My crazy keyboard", // iProduct - The String Descriptor that has the product name -
+    0,                   // iProduct - The String Descriptor that has the product name -
                          // Specified
                          // by USB 2.0 Table 9-8
     0,                   // iSerialNumber - The String Descriptor that has the serial number of
@@ -345,13 +348,13 @@ ISR(USB_COM_vect)
 
       if (wValue == 0x0100)
       { // Is the host requesting a device descriptor?
-        descriptor = device_descriptor;
+        descriptor = (uint8_t *)device_descriptor;
         descriptor_length = pgm_read_byte(descriptor);
       }
       else if (wValue ==
                0x0200)
       { // Is it asking for a configuration descriptor?
-        descriptor = configuration_descriptor;
+        descriptor = (uint8_t *)configuration_descriptor;
         descriptor_length =
             CONFIG_SIZE; // Configuration descriptor is comprised of many
                          // different descriptors; the length is more than
@@ -360,12 +363,12 @@ ISR(USB_COM_vect)
       else if (wValue ==
                0x2100)
       { // Is it asking for a HID Report Descriptor?
-        descriptor = configuration_descriptor + HID_OFFSET;
+        descriptor = (uint8_t *)configuration_descriptor + HID_OFFSET;
         descriptor_length = pgm_read_byte(descriptor);
       }
       else if (wValue == 0x2200)
       {
-        descriptor = keyboard_HID_descriptor;
+        descriptor = (uint8_t *)keyboard_HID_descriptor;
         descriptor_length = sizeof(keyboard_HID_descriptor);
       }
       else

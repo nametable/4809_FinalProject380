@@ -10,10 +10,10 @@ usb.h
 extern volatile uint8_t keyboard_pressed_keys[6];
 extern volatile uint8_t keyboard_modifier;
 
-uint8_t usb_config_status;
-uint8_t keyboard_protocol; // This doesn't matter at all, we just need it for supporting a request
+extern uint8_t usb_config_status;
+extern uint8_t keyboard_protocol; // This doesn't matter at all, we just need it for supporting a request
 
-uint8_t keyboard_leds;  // You don't need to use this if you don't want
+extern uint8_t keyboard_leds;  // You don't need to use this if you don't want
                                // to or don't have the hardware
 
 int usb_init();

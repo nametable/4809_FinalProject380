@@ -2,9 +2,14 @@
 
 void setup_serial()
 {
-    UBRR1 = 7;                            // 115200 baudrate (U2Xn = 0, CLK 16Mhz)
+    // UBRR1 = 7;                            // 115200 baudrate (U2Xn = 0, CLK 16Mhz)
+    // UBRR1 = 8;                            // 115200 baudrate (U2Xn = 1, CLK 8Mhz)
+    // UCSR1A |= (1 << U2X1);
+    // UBRR1 = 51;                              // 9600 baudrate (U2Xn = 0, CLK 8Mhz)
+    // UBRR1 = 103;                              // 9600 baudrate (U2Xn = 0, CLK 16Mhz)
+    UBRR1 = 12;                              // 76800 baud (.2% error)
                                           // Leaving parity to default
-    UCSR1B = (1 << RXEN1) | (1 << TXEN1); // Enable transmit and receive
+    UCSR1B = (1 << RXEN1) | (1 << TXEN1) | (1 << RXCIE1); // Enable transmit and receive + RX interrrupt
 }
 
 void serial_send(uint8_t *buffer)
