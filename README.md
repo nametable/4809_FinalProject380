@@ -51,7 +51,7 @@
 
 ## Performance Testing
  1. Simple time between keypresses test can be found in `tests/performance_test.py`
-     - Sample data -> [performance_data.xlsx](tests/performance_data.xlsx)
+     - Sample data -> [performance_data.xlsx](https://github.com/nametable/4809_FinalProject380/blob/master/tests/performance_stats.xlsx?raw=true)
 
 ## External source
  - USB Protocol Implementation for 32u4 taken from https://github.com/kmani314/ATMega32u4-HID-Keyboard and modified
