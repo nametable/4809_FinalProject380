@@ -14,7 +14,7 @@
 ## Installation #
  1. Program WifiNina chip with [SerialToSerialBT example](https://github.com/espressif/arduino-esp32/blob/master/libraries/BluetoothSerial/examples/SerialToSerialBT/SerialToSerialBT.ino), replacing `ESP32test` with the name you want. In order to flash to the wifi chip, use WifiNINA SerialNinaPassthrough example.
      - Use  `--before no_reset` instead of `--before default_reset` on the `esptool` command that the Arduino IDE uses.
- 2. Configure (runs cmake)
+ 2. Configure (runs cmake: cmake configs may require changing some paths)
     ```bash
     ./configure.sh
     ```
