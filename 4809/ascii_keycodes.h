@@ -16,7 +16,7 @@ const uint8_t codes4ascii[256] = {
     KEY_NONE, KEY_NONE,     // 7	07	00000111	&#7;	BEL	Bell
     KEY_NONE, KEY_BACKSPACE,// 8	08	00001000	&#8;	BS	Backspace
     KEY_NONE, KEY_TAB,      // 9	09	00001001	&#9;	HT	Horizontal Tab
-    KEY_NONE, KEY_NONE,     // 10	0A	00001010	&#10;	LF	Line Feed
+    KEY_NONE, KEY_ENTER,    // 10	0A	00001010	&#10;	LF	Line Feed
     KEY_NONE, KEY_NONE,     // 11	0B	00001011	&#11;	VT	Vertical Tab
     KEY_NONE, KEY_NONE,     // 12	0C	00001100	&#12;	FF	Form Feed
     KEY_NONE, KEY_ENTER,    // 13	0D	00001101	&#13;	CR	Carriage Return

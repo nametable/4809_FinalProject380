@@ -1,2 +1,4 @@
 build
+32u4/medbgupdi.hex
 *.o
+venv
